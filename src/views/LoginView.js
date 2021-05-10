@@ -4,7 +4,7 @@ import styles from './LoginView.module.css';
 class LoginView extends Component {
   state = {
     email: '',
-    pasword: '',
+    password: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -14,11 +14,11 @@ class LoginView extends Component {
   handleSubmit = e => {
     e.prevantDefault();
 
-    this.setState({ email: '', pasword: '' });
+    this.setState({ email: '', password: '' });
   };
 
   render() {
-    const { email, pasword } = this.state;
+    const { email, password } = this.state;
 
     return (
       <div>
@@ -40,9 +40,9 @@ class LoginView extends Component {
           <label className={styles.label}>
             Пароль
             <input
-              type="pasword"
-              name="pasword"
-              value={pasword}
+              type="password"
+              name="password"
+              value={password}
               onChange={this.handleChange}
             />
           </label>

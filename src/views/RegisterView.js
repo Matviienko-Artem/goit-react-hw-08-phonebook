@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styles from './LoginView.module.css';
+import authOperations from '../redux/auth/auth-operations';
 
 class RegisterView extends Component {
   state = {
     name: '',
     email: '',
-    pasword: '',
+    password: '',
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -13,13 +15,15 @@ class RegisterView extends Component {
   };
 
   handleSubmit = e => {
-    e.prevantDefault();
+    e.preventDefault();
 
-    this.setState({ name: '', email: '', pasword: '' });
+    this.props.onRegister(this.state);
+
+    this.setState({ name: '', email: '', password: '' });
   };
 
   render() {
-    const { name, email, pasword } = this.state;
+    const { name, email, password } = this.state;
 
     return (
       <div>
@@ -50,9 +54,9 @@ class RegisterView extends Component {
           <label className={styles.label}>
             Пароль
             <input
-              type="pasword"
-              name="pasword"
-              value={pasword}
+              type="password"
+              name="password"
+              value={password}
               onChange={this.handleChange}
             />
           </label>
@@ -63,4 +67,8 @@ class RegisterView extends Component {
   }
 }
 
-export default RegisterView;
+const mapDispatchToProps = {
+  onRegister: authOperations.register,
+};
+
+export default connect(null, mapDispatchToProps)(RegisterView);

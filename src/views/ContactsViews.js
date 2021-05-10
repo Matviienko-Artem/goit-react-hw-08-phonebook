@@ -9,7 +9,7 @@ import style from '../components/ContactForm/ContactForm.module.css';
 
 class ContactsViews extends Component {
   componentDidMount() {
-    this.props.fetchContacts();
+    // this.props.fetchContacts();
   }
 
   render() {
