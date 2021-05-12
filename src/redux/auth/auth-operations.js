@@ -10,8 +10,22 @@ const register = credential => async dispatch => {
     const response = await axios.post('/users/signup', credential);
     dispatch(authActions.registerSuccess(response.data));
   } catch (error) {
-    dispatch(authActions.registerError(error));
+    dispatch(authActions.registerError(error.message));
   }
 };
 
-export default { register };
+const logIn = credential => async dispatch => {
+  dispatch(authActions.loginRequest());
+
+  try {
+    const response = await axios.post('/users/login', credential);
+    dispatch(authActions.loginSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.loginError(error.message));
+  }
+};
+
+export default { register, logIn };
+
+// ninja123@mail.com
+// ninja123
