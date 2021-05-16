@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import ContactForm from '../components/ContactForm/ContactForm';
 import ContactList from '../components/ContactList/ContactList';
 import Filter from '../components/Filter/Filter';
-import operations from '../redux/contacts/contacts-operations';
-import selectors from '../redux/contacts/contacts-selectors';
+import * as contactOperations from '../redux/contacts/contacts-operations';
+import * as contactSelectors from '../redux/contacts/contacts-selectors';
 import style from '../components/ContactForm/ContactForm.module.css';
 
 class ContactsViews extends Component {
@@ -30,11 +30,11 @@ class ContactsViews extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoadingContacts: selectors.getLoading(state),
+  isLoadingContacts: contactSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchContacts: () => dispatch(operations.fetchContacts()),
+  fetchContacts: () => dispatch(contactOperations.fetchContacts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsViews);

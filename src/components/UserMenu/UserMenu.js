@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import authSelectors from '../../redux/auth/auth-selectors';
-import authOperations from '../../redux/auth/auth-operations';
+import * as authSelectors from '../../redux/auth/auth-selectors';
+import * as authOperations from '../../redux/auth/auth-operations';
 
 import style from './UserMenu.module.css';
 

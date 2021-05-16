@@ -1,12 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-const getLoading = state => state.contacts.loading;
+export const getLoading = state => state.contacts.loading;
 
-const getFilter = state => state.contacts.filter;
+export const getFilter = state => state.contacts.filter;
 
-const getItems = state => state.contacts.items;
+export const getItems = state => state.contacts.items;
 
-const getVisibleContacs = createSelector(
+export const getVisibleContacs = createSelector(
   [getItems, getFilter],
   (items, filter) => {
     const normalizedFilter = filter.toLowerCase();
@@ -15,5 +15,3 @@ const getVisibleContacs = createSelector(
     );
   },
 );
-
-export default { getLoading, getFilter, getVisibleContacs };

@@ -3,7 +3,7 @@ import * as authActions from './auth-action';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const token = {
+export const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
@@ -12,7 +12,7 @@ const token = {
   },
 };
 
-const register = credential => async dispatch => {
+export const register = credential => async dispatch => {
   dispatch(authActions.registerRequest());
 
   try {
@@ -26,7 +26,7 @@ const register = credential => async dispatch => {
   }
 };
 
-const logIn = credential => async dispatch => {
+export const logIn = credential => async dispatch => {
   dispatch(authActions.loginRequest());
 
   try {
@@ -40,7 +40,7 @@ const logIn = credential => async dispatch => {
   }
 };
 
-const logOut = () => async dispatch => {
+export const logOut = () => async dispatch => {
   dispatch(authActions.logoutRequest());
 
   try {
@@ -54,7 +54,7 @@ const logOut = () => async dispatch => {
   }
 };
 
-const getCurrentUser = () => async (dispatch, getState) => {
+export const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -75,8 +75,6 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserError(error.message));
   }
 };
-
-export default { register, logIn, logOut, getCurrentUser };
 
 // ninja123@mail.com
 // ninja123

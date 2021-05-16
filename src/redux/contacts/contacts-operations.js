@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actions from './contacts-action';
 
-const fetchContacts = () => dispatch => {
+export const fetchContacts = () => dispatch => {
   dispatch(actions.fetchContactRequest());
 
   axios
@@ -10,7 +10,7 @@ const fetchContacts = () => dispatch => {
     .catch(error => dispatch(actions.fetchContactError(error.message)));
 };
 
-const addNewContact = contact => dispatch => {
+export const addNewContact = contact => dispatch => {
   const newContact = {
     name: contact.name,
     number: contact.number,
@@ -24,7 +24,7 @@ const addNewContact = contact => dispatch => {
     .catch(error => dispatch(actions.addNewContactError(error.message)));
 };
 
-const deleteContact = id => dispatch => {
+export const deleteContact = id => dispatch => {
   dispatch(actions.deleteContactRequest());
 
   axios
@@ -32,5 +32,3 @@ const deleteContact = id => dispatch => {
     .then(() => dispatch(actions.deleteContactSuccess(id)))
     .catch(error => dispatch(actions.deleteContactError(error.message)));
 };
-
-export default { fetchContacts, addNewContact, deleteContact };

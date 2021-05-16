@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './LoginView.module.css';
-import authOperations from '../redux/auth/auth-operations';
+import * as authOperations from '../redux/auth/auth-operations';
 
 class LoginView extends Component {
   state = {
