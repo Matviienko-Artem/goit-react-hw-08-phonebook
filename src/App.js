@@ -1,11 +1,11 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Switch } from 'react-router-dom';
-import AppBar from './components/UserMenu/AppBar';
+import AppBar from './components/UserMenu/AppBar/AppBar';
 import styles from './styles.module.css';
 import * as authOperations from './redux/auth/auth-operations';
 import { connect } from 'react-redux';
-import PrivateRoute from './components/UserMenu/PrivateRoute';
-import PublicRoute from './components/UserMenu/PublicRoute';
+import PrivateRoute from './components/routes/PrivateRoute';
+import PublicRoute from './components/routes/PublicRoute';
 
 const HomeView = lazy(() =>
   import('./views/HomeView' /* webpackChunkName: "home-page" */),
